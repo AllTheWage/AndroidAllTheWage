@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green"
+    tools:context="com.example.alex.allthewage.MainActivity">
+
+    <ImageView
+
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:id="@+id/AtwWhite2"
+        android:src="@drawable/atw_logo_white"
+        android:layout_marginStart="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/employeeEmailID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="Email"
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        android:layout_alignBottom="@+id/AtwWhite2"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/employeePasswordID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:layout_alignTop="@+id/employeeEmailID"
+        android:layout_alignStart="@+id/employeeEmailID" />
+
+    <TextView
+        android:id="@+id/employeeLoginTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="31dp"
+        android:layout_marginEnd="29dp"
+        android:text="Employee Login"
+        android:textColor="@android:color/white"
+        android:layout_above="@+id/employeeEmailID"
+        android:layout_alignEnd="@+id/employeeEmailID" />
+
+    <Button
+        android:id="@+id/LoginButton2"
+        android:background="@drawable/custom_button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGIN"
+        android:textColor="#ffff"
+        android:layout_marginTop="21dp"
+        android:layout_below="@+id/employeePasswordID"
+        android:layout_alignStart="@+id/employeePasswordID"
+        android:layout_marginStart="11dp" />
+
+    <Button
+        android:id="@+id/SignUpButton2"
+        android:background="@drawable/custom_button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:textColor="#ffff"
+        android:layout_alignBaseline="@+id/LoginButton2"
+        android:layout_alignBottom="@+id/LoginButton2"
+        android:layout_alignEnd="@+id/employeePasswordID"
+        android:layout_marginEnd="7dp" />
+
+
+</RelativeLayout>
