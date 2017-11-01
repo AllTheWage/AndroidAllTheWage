@@ -87,7 +87,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textCapWords"
+        android:textColor="#fff"
+        android:gravity="center"
         android:layout_alignBaseline="@+id/nameTV"
         android:layout_alignBottom="@+id/nameTV"
         android:layout_toEndOf="@+id/ageTV"
@@ -99,6 +101,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
+        android:textColor="#fff"
+        android:gravity="center"
         android:layout_alignBaseline="@+id/emailTV"
         android:layout_alignBottom="@+id/emailTV"
         android:layout_alignStart="@+id/dobET" />
@@ -110,7 +114,11 @@
         android:layout_alignStart="@+id/nameET"
         android:layout_below="@+id/nameET"
         android:ems="10"
-        android:inputType="date"/>
+        android:inputType="date"
+        android:hint="(MM/DD/YYYY)"
+        android:textColorHint="#fff"
+        android:gravity="center"
+        android:textColor="#fff"/>
 
     <EditText
         android:id="@+id/phoneET"
@@ -119,7 +127,9 @@
         android:layout_alignStart="@+id/emailET"
         android:layout_below="@+id/emailET"
         android:ems="10"
-        android:inputType="phone" />
+        android:inputType="phone"
+        android:gravity="center"
+        android:textColor="#fff"/>
 
     <EditText
         android:id="@+id/passET"
@@ -128,7 +138,8 @@
         android:layout_below="@+id/phoneET"
         android:ems="10"
         android:inputType="textPassword"
-        android:layout_alignEnd="@+id/phoneET" />
+        android:layout_alignEnd="@+id/phoneET"
+        android:textColor="#fff"/>
 
     <EditText
         android:id="@+id/confirmPassET"
@@ -137,7 +148,8 @@
         android:layout_alignStart="@+id/passET"
         android:layout_below="@+id/passET"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textColor="#fff"/>
 
     <Button
         android:id="@+id/employeeSignup"
