@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green"
+    tools:context="com.example.alex.allthewage.AccountSplit">
+
+    <ImageView
+
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:id="@+id/AtwWhite0"
+        android:src="@drawable/atw_logo_white"
+        android:layout_marginStart="45dp"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/employerButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        android:text="Employer"
+        android:textColor="#ffffff"
+        android:background="@drawable/custom_button1"
+        android:layout_above="@+id/employeeButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/employeeButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:text="Employee"
+        android:background="@drawable/custom_button1"
+        android:layout_marginBottom="99dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/employerButton" />
+
+
+</RelativeLayout>
+
+
+

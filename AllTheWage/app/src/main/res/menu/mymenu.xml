@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/homeMenu"
+        android:title="Home">
+    </item>
+    <item android:id="@+id/employeesMenu"
+        android:title="Employees">
+    </item>
+    <item android:id="@+id/paychecksMenu"
+        android:title="Paychecks">
+    </item>
+    <item android:id="@+id/sethoursMenu"
+        android:title="Set Hours">
+    </item>
+    <item android:id="@+id/setpayrateMenu"
+        android:title="Set Pay">
+    </item>
+    <item android:id="@+id/forumMenu"
+        android:title="Discussion">
+    </item>
+    <item android:id="@+id/helpMenu"
+        android:title="Help!">
+    </item>
+    <item android:id="@+id/signoutMenu"
+        android:title="Sign Out">
+    </item>
+</menu>
