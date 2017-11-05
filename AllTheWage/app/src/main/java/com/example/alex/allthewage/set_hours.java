@@ -7,12 +7,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Created by Alex on 11/1/2017.
+ * Modified by Jamine Guo on 11/5/2017.
+ *
+ * List of things to work on:
+ *      - Limit input value for only numbers (hoping to be able to assign specific keyboard instead)
+ *      - Add exception for null value input click
+ *      - Alignment of title
+ *      - Getting and saving current hour/rate from "employee profile"
+ *      - Change onCreate text for currentHourText to display current hour initially, 0 if nothing
+ *      - Maybe include a "current rate"
+ *      - Remove the underline in currentHourText
+ *      - Change reselect method when clicked
  */
 
 public class set_hours extends AppCompatActivity {
+
+    private double hours;
+    TextView currentHourDisplayText;
+    EditText enterHourText;
+
+    double getHours(){
+        return hours;
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +47,32 @@ public class set_hours extends AppCompatActivity {
         // Make sure the toolbar exists in the activity and is not null
         setSupportActionBar(toolbar);
 
+        currentHourDisplayText = (TextView) findViewById(R.id.currentHourDisplayText);
+        enterHourText = (EditText) findViewById(R.id.enterHourText);
+
+        Button inputHourButton = (Button) findViewById(R.id.inputHoursButton);
+        inputHourButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hours = Double.parseDouble(enterHourText.getText().toString());
+
+                if(hours == 1.0)
+                    currentHourDisplayText.setText("Current set hours is " + hours + " hour");
+                else
+                    currentHourDisplayText.setText("Current set hours is " + hours + " hours");
+                enterHourText.setText("Success! Reset?");
+                enterHourText.selectAll(); //Current way of reselecting but pref figuring out a dif way
+            }
+        });
+
+        Button setRateButton = (Button) findViewById(R.id.setRateButton);
+        setRateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent setPayIntent = new Intent (set_hours.this, set_pay_rate.class);
+                startActivity(setPayIntent);
+            }
+        });
     }
 
 

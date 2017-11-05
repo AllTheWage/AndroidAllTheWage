@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,18 +18,72 @@
     </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
+        android:id="@+id/currentHourText"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Set hours"
-            android:textColor="#fff"
-            android:textSize="20sp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="102dp" />
+            android:layout_marginTop="102dp"
+            android:paddingBottom="30dp"
+            android:text="Set hours"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/setRateButton"
+            android:layout_width="@android:dimen/thumbnail_width"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/inputHoursButton"
+            android:layout_marginBottom="34dp"
+            android:background="@drawable/custom_button1"
+            android:text="Go to Set Rate Page"
+            android:textColor="#ffffffff" />
+
+        <Button
+            android:id="@+id/inputHoursButton"
+            android:layout_width="@android:dimen/thumbnail_width"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/setRateButton"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/custom_button1"
+            android:text="Input Hours"
+            android:textColor="#ffffffff" />
+
+        <EditText
+            android:id="@+id/enterHourText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/inputHoursButton"
+            android:layout_alignBottom="@id/AtwWhite2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="43dp"
+            android:width="220dp"
+            android:drawableRight="?attr/actionModeCloseDrawable"
+            android:ems="10"
+            android:hint="Enter Number of Hours"
+            android:inputType="numberDecimal"
+            android:paddingTop="50dp"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffffffff" />
+
+        <EditText
+            android:id="@+id/currentHourDisplayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true"
+            android:width="300dp"
+            android:ems="10"
+            android:inputType="textEmailAddress|textPersonName"
+            android:text="Current set hours is ..."
+            android:textStyle="bold|italic" />
 
 
     </RelativeLayout>
