@@ -57,13 +57,11 @@
             android:textColor="#ffffffff" />
 
         <EditText
-            android:id="@+id/enterHourText"
+            android:id="@+id/enterRateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/inputHoursButton"
-            android:layout_alignBottom="@id/AtwWhite2"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="43dp"
+            android:layout_centerVertical="true"
             android:width="220dp"
             android:drawableRight="?attr/actionModeCloseDrawable"
             android:ems="10"

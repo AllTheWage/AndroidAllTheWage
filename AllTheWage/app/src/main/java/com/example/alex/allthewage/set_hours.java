@@ -48,7 +48,7 @@ public class set_hours extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         currentHourDisplayText = (TextView) findViewById(R.id.currentHourDisplayText);
-        enterHourText = (EditText) findViewById(R.id.enterHourText);
+        enterHourText = (EditText) findViewById(R.id.enterRateText);
 
         Button inputHourButton = (Button) findViewById(R.id.inputHoursButton);
         inputHourButton.setOnClickListener(new View.OnClickListener() {
