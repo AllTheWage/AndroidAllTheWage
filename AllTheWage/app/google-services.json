@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "221299104341",
+    "firebase_url": "https://all-the-wage.firebaseio.com",
+    "project_id": "all-the-wage",
+    "storage_bucket": "all-the-wage.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221299104341:android:128bef773df79354",
+        "android_client_info": {
+          "package_name": "com.example.alex.allthewage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "221299104341-5jfm1jn04k6gs8tlmb62orrvth5eknmf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alex.allthewage",
+            "certificate_hash": "7459ce928b419ed5ff4da90615908773fccec5e5"
+          }
+        },
+        {
+          "client_id": "221299104341-k44c9uur5dv05ii7laa0b4hb6fspgsq8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4NorLVcH2NL0CYevXkDzFtoZ415p2GtY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "221299104341-gq2gemc4shckv2iuhi9muiusumoaobla.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ibarraandiba.AllTheWage"
+              }
+            },
+            {
+              "client_id": "221299104341-k44c9uur5dv05ii7laa0b4hb6fspgsq8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

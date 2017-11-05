@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+//FIREBASE AUTH
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends Activity {
 
     Button rButton; //employer button
@@ -15,6 +18,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.account_split);
+
 
         rButton = (Button) findViewById(R.id.employerButton);
         eButton = (Button) findViewById(R.id.employeeButton);
@@ -31,7 +35,8 @@ public class MainActivity extends Activity {
         eButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //TRIED TO SWITCH
+                System.out.println("TRIED TO SWITCH");
                 Intent split2 = new Intent(MainActivity.this, employee_login.class);
                 startActivity(split2);
             }
