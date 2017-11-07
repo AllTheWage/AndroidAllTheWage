@@ -7,12 +7,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Created by Alex on 11/1/2017.
+ * Modified by Jamine Guo on 11/5/2017
+ *
+ * List of things to work on:
+ *      - Check for xml alignment once login for me works
+ *      - Limit input value for only numbers (hoping to be able to assign specific keyboard instead)
+ *      - Add exception for null value input click
+ *      - Alignment of title
+ *      - Getting and saving current hour/rate from "employee profile"
+ *      - Change onCreate text for currentRateText to display current rate initially, 0 if nothing
+ *      - Maybe include a "current hour"
+ *      - Remove the underline in currentRateText
+ *      - Change reselect method when clicked
  */
 
 public class set_pay_rate extends AppCompatActivity {
+
+    private double payRate;
+    TextView currentRateDisplayText;
+    EditText enterRateText;
+
+    double getPayRate(){ return payRate; }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,6 +46,30 @@ public class set_pay_rate extends AppCompatActivity {
         // Make sure the toolbar exists in the activity and is not null
         setSupportActionBar(toolbar);
 
+
+        currentRateDisplayText = (TextView) findViewById(R.id.currentRateDisplayText);
+        enterRateText = (EditText) findViewById(R.id.enterRateText);
+
+        Button inputRatesButton = (Button) findViewById(R.id.inputRatesButton);
+        inputRatesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                payRate = Double.parseDouble(enterRateText.getText().toString());
+
+                currentRateDisplayText.setText("Current pay-rate is $" + payRate + " per hour");
+                enterRateText.setText("Success! Reset?");
+                enterRateText.selectAll(); //Current way of reselecting but pref figuring out a dif way
+            }
+        });
+
+        Button setHourButton = (Button) findViewById(R.id.setHourButton);
+        setHourButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent setHoursIntent = new Intent (set_pay_rate.this, set_hours.class);
+                startActivity(setHoursIntent);
+            }
+        });
     }
 
 

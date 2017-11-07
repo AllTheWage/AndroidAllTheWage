@@ -20,6 +20,10 @@ android {
 }
 
 dependencies {
+    compile 'com.google.firebase:firebase-core:11.4.2'  //adding firebase core
+    compile 'com.google.firebase:firebase-auth:11.4.2'  //adding firebase auth
+    compile 'com.google.firebase:firebase-database:11.4.2'  //adding firebase database
+
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -28,3 +32,4 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }
+apply plugin: 'com.google.gms.google-services'
