@@ -33,8 +33,6 @@ public class employee_login extends Activity implements
     private FirebaseAuth mAuth;
 
 
-//    Intent signupIntent = new Intent(employee_login.this, employee_signup.class);
-//    startActivity(signupIntent);
 
     @Override
     public void onClick(View v) {
