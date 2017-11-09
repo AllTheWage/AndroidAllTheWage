@@ -48,6 +48,12 @@ public class employee_login extends Activity implements
 
             }
         }   //END OF IF LOGIN_BUTTON
+        if(i == R.id.SignUpButton2) {
+            signUp();
+
+
+
+        }
 
     }//END OF ONCLICK
 
@@ -80,15 +86,26 @@ public class employee_login extends Activity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.employee_login);
 
+
+
         findViewById(R.id.LoginButton2).setOnClickListener(this);   //setting the click listner for Login Button
+        findViewById(R.id.SignUpButton2).setOnClickListener(this);   //setting the click listner for Login Button
+
 
         EmailField = (EditText) findViewById(R.id.employeeEmailID);
         PasswordField = (EditText) findViewById(R.id.employeePasswordID);
 
-        mAuth = FirebaseAuth.getInstance();    //initializing Firebase Auth to be used to login
+       mAuth = FirebaseAuth.getInstance();    //initializing Firebase Auth to be used to login
+
 
         //DUMMY CALL TO SIGN IN BECAUSE FOR SOME REASON IT DOESN'T WORK ON THE FIRST TRY
         mAuth.signInWithEmailAndPassword(" ", " ");
 
+    }
+
+
+    public void signUp(){
+        Intent employerSignUpIntent = new Intent(employee_login.this, employee_signup.class);
+        startActivity(employerSignUpIntent);
     }
 }

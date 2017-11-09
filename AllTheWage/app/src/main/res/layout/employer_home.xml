@@ -28,17 +28,16 @@
                     android:text="Welcome, [Company Name]"
                     android:textColor="#fff"
                     android:textSize="16sp"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="17dp"
                     android:layout_alignParentTop="true"
-                    android:layout_alignStart="@+id/imageView" />
+                    android:layout_centerHorizontal="true" />
 
                 <ImageView
-                    android:layout_width="275dp"
+                    android:layout_width="350dp"
                     android:layout_height="275dp"
                     android:src="@drawable/rectangle"
                     android:id="@+id/imageView"
-                    android:layout_marginTop="41dp"
+                    android:layout_marginTop="18dp"
                     android:layout_below="@+id/employerWelcome"
                     android:layout_centerHorizontal="true" />
             </RelativeLayout>

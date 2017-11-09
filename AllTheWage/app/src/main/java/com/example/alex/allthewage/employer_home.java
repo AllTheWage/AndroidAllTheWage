@@ -11,6 +11,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.ActionBar;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.firebase.auth.*;
+import com.google.firebase.database.*;
+
 
 /**
  * Created by Alex on 11/1/2017.
@@ -19,16 +25,53 @@ import android.support.v7.app.ActionBar;
 public class employer_home extends AppCompatActivity {
 
 
+    //GRABBING AN INSTANCE OF FIREBASEAUTH
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+
+    //Getting the reference to the database
+    DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+    //Getting the reference to the employers personal location
+    DatabaseReference empref = ref.child("EMPLOYERS").child("Companies").child(auth.getUid());
+
+    private TextView welcomeMessage;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.employer_home);
+
+        welcomeMessage = (TextView) findViewById(R.id.employerWelcome);
+
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         // Make sure the toolbar exists in the activity and is not null
         setSupportActionBar(toolbar);
+
+        //DESCRIPTION
+        // Allows us to display the custom welcome message for each company depending on
+        // their own company name
+        empref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+               for(DataSnapshot child: dataSnapshot.getChildren())
+               {
+                   globalVars.GlobalCompanyName = child.getKey();
+                   System.out.println("Welcome, " +  globalVars.GlobalCompanyName);
+
+                   welcomeMessage.setText("Welcome, " +  globalVars.GlobalCompanyName);
+
+               }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
@@ -66,6 +109,7 @@ public class employer_home extends AppCompatActivity {
                 startActivity(helpIntent);
                 return true;
             case R.id.signoutMenu:
+                auth.signOut();
                 Intent signOutIntent = new Intent(employer_home.this, MainActivity.class);
                 startActivity(signOutIntent);
                 return true;
