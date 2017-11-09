@@ -66,6 +66,11 @@
         <activity android:name=".employee_home">
 
         </activity>
+        <activity android:name=".employer_signup">
+
+        </activity>
+
+
     </application>
 
 </manifest>

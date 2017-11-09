@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class AccountSplit extends Activity {
 
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class AccountSplit extends Activity {
         //SINGING OUT ANY USER IN CASE THERE
         //IS STILL SOMEONE LOGGED IN
         mAuth.signOut();
+        globalVars.GlobalCompanyName = " ";
 
 
     }
