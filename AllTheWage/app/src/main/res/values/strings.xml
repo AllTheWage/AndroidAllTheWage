@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">AllTheWage</string>
     <string-array name="paycheck_choices">
-        <item>Pick Employees</item>
         <item>Pay all Employees</item>
+        <item>Pick Employees</item>
     </string-array>
+    <string name="action_settings">Settings</string>
 </resources>
