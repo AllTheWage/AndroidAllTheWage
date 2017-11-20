@@ -64,9 +64,10 @@
             android:width="220dp"
             android:drawableRight="?attr/actionModeCloseDrawable"
             android:ems="10"
-            android:hint="Enter Number of Hours"
+            android:hint="Enter Rate ($) per Hour"
             android:inputType="numberDecimal"
             android:paddingTop="50dp"
+            android:selectAllOnFocus="true"
             android:textColor="#ffffffff"
             android:textColorHint="#ffffffff" />
 
@@ -82,20 +83,6 @@
             android:text="Current set rate is ..."
             android:textStyle="bold|italic" />
 
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/enterRateText"
-            android:layout_alignBottom="@+id/enterRateText"
-            android:layout_alignParentLeft="false"
-            android:layout_alignParentRight="false"
-            android:layout_toLeftOf="@+id/enterRateText"
-            android:layout_toStartOf="@+id/enterRateText"
-            android:width="15dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="$" />
     </RelativeLayout>
 
 </LinearLayout>

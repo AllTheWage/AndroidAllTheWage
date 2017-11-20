@@ -17,15 +17,14 @@ import android.widget.TextView;
  * Modified by Jamine Guo on 11/5/2017
  *
  * List of things to work on:
- *      - Check for xml alignment once login for me works
  *      - Limit input value for only numbers (hoping to be able to assign specific keyboard instead)
  *      - Add exception for null value input click
- *      - Alignment of title
+ *      - Limit input to 2 decimal places
  *      - Getting and saving current hour/rate from "employee profile"
  *      - Change onCreate text for currentRateText to display current rate initially, 0 if nothing
  *      - Maybe include a "current hour"
  *      - Remove the underline in currentRateText
- *      - Change reselect method when clicked
+ *      - Integrate Firebase
  */
 
 public class set_pay_rate extends AppCompatActivity {
@@ -34,6 +33,7 @@ public class set_pay_rate extends AppCompatActivity {
     TextView currentRateDisplayText;
     EditText enterRateText;
 
+    // Get Functions
     double getPayRate(){ return payRate; }
 
     @Override
@@ -50,15 +50,16 @@ public class set_pay_rate extends AppCompatActivity {
         currentRateDisplayText = (TextView) findViewById(R.id.currentRateDisplayText);
         enterRateText = (EditText) findViewById(R.id.enterRateText);
 
+        // Listeners
         Button inputRatesButton = (Button) findViewById(R.id.inputRatesButton);
         inputRatesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 payRate = Double.parseDouble(enterRateText.getText().toString());
-
+                // Change text after input
                 currentRateDisplayText.setText("Current pay-rate is $" + payRate + " per hour");
-                enterRateText.setText("Success! Reset?");
-                enterRateText.selectAll(); //Current way of reselecting but pref figuring out a dif way
+                enterRateText.setHint("Success! Reset?");
+                enterRateText.setText("");
             }
         });
 

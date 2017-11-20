@@ -19,12 +19,13 @@ import android.widget.TextView;
  * List of things to work on:
  *      - Limit input value for only numbers (hoping to be able to assign specific keyboard instead)
  *      - Add exception for null value input click
- *      - Alignment of title
+ *      - Limit input to 2 decimal places
+ *      - Remove the "hour" and "hours" distinction?
  *      - Getting and saving current hour/rate from "employee profile"
  *      - Change onCreate text for currentHourText to display current hour initially, 0 if nothing
  *      - Maybe include a "current rate"
  *      - Remove the underline in currentHourText
- *      - Change reselect method when clicked
+ *      - Integrate Firebase
  */
 
 public class set_hours extends AppCompatActivity {
@@ -33,6 +34,7 @@ public class set_hours extends AppCompatActivity {
     TextView currentHourDisplayText;
     EditText enterHourText;
 
+    // Get Functions
     double getHours(){
         return hours;
     }
@@ -50,18 +52,19 @@ public class set_hours extends AppCompatActivity {
         currentHourDisplayText = (TextView) findViewById(R.id.currentHourDisplayText);
         enterHourText = (EditText) findViewById(R.id.enterRateText);
 
+        // Listeners
         Button inputHourButton = (Button) findViewById(R.id.inputHoursButton);
         inputHourButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 hours = Double.parseDouble(enterHourText.getText().toString());
-
+                // Change text after input
                 if(hours == 1.0)
                     currentHourDisplayText.setText("Current set hours is " + hours + " hour");
                 else
                     currentHourDisplayText.setText("Current set hours is " + hours + " hours");
-                enterHourText.setText("Success! Reset?");
-                enterHourText.selectAll(); //Current way of reselecting but pref figuring out a dif way
+                enterHourText.setHint("Success! Reset?");
+                enterHourText.setText("");
             }
         });
 
