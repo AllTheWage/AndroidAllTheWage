@@ -8,159 +8,115 @@
         android:id="@+id/signupTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="38dp"
         android:text="Sign up"
         android:textSize="40dp"
         android:textColor="#fff"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:id="@+id/nameTV"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/companyNameET"
+        android:layout_width="250dp"
+
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Name"
-        android:textSize="20dp"
-        android:textColor="#fff"
-        android:layout_marginStart="12dp"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="Company Name"
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        android:inputType="textPersonName"
         android:layout_below="@+id/signupTV"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:id="@+id/ageTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/nameTV"
-        android:layout_below="@+id/nameTV"
-        android:layout_marginTop="20dp"
-        android:text="Date of Birth"
-        android:textColor="#fff"
-        android:textSize="20dp" />
-
-    <TextView
-        android:id="@+id/emailTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Email"
-        android:textSize="20dp"
-        android:textColor="#fff"
-        android:layout_below="@+id/ageTV"
-        android:layout_alignStart="@+id/ageTV" />
-
-    <TextView
-        android:id="@+id/phoneTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Phone"
-        android:textSize="20dp"
-        android:textColor="#fff"
-        android:layout_below="@+id/emailTV"
-        android:layout_alignStart="@+id/emailTV" />
-
-    <TextView
-        android:id="@+id/passTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Password"
-        android:textSize="20dp"
-        android:textColor="#fff"
-        android:layout_below="@+id/phoneTV"
-        android:layout_alignStart="@+id/phoneTV" />
-
-    <TextView
-        android:id="@+id/confirmTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
-        android:text="Confirm Password"
-        android:textSize="20dp"
-        android:textColor="#fff"
-        android:layout_below="@+id/passTV"
-        android:layout_alignStart="@+id/passTV" />
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/nameET"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
+
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textCapWords"
-        android:textColor="#fff"
-        android:gravity="center"
-        android:layout_alignBaseline="@+id/nameTV"
-        android:layout_alignBottom="@+id/nameTV"
-        android:layout_toEndOf="@+id/ageTV"
-        android:layout_marginStart="9dp" />
+        android:hint="Name"
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/companyNameET"
+        android:layout_alignStart="@+id/companyNameET" />
 
     <EditText
-        android:id="@+id/emailET"
-        android:layout_width="wrap_content"
+        android:id="@+id/ageET"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textEmailAddress"
-        android:textColor="#fff"
-        android:gravity="center"
-        android:layout_alignBaseline="@+id/emailTV"
-        android:layout_alignBottom="@+id/emailTV"
-        android:layout_alignStart="@+id/dobET" />
-
-    <EditText
-        android:id="@+id/dobET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/nameET"
+        android:hint="Age"
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        android:inputType="textPersonName"
         android:layout_below="@+id/nameET"
-        android:ems="10"
-        android:inputType="date"
-        android:hint="(MM/DD/YYYY)"
-        android:textColorHint="#fff"
-        android:gravity="center"
-        android:textColor="#fff"/>
+        android:layout_alignStart="@+id/nameET"
+        android:layout_alignEnd="@+id/nameET" />
 
     <EditText
         android:id="@+id/phoneET"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/emailET"
-        android:layout_below="@+id/emailET"
         android:ems="10"
-        android:inputType="phone"
-        android:gravity="center"
-        android:textColor="#fff"/>
+        android:hint="Phone"
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/ageET"
+        android:layout_alignStart="@+id/ageET"
+        android:layout_alignEnd="@+id/ageET" />
+
+    <EditText
+        android:id="@+id/emailET"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Email"
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/phoneET"
+        android:layout_alignStart="@+id/phoneET"
+        android:layout_alignEnd="@+id/phoneET" />
 
     <EditText
         android:id="@+id/passET"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/phoneET"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:layout_alignEnd="@+id/phoneET"
-        android:textColor="#fff"/>
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/emailET"
+        android:layout_alignStart="@+id/emailET"
+        android:layout_alignEnd="@+id/emailET" />
 
     <EditText
         android:id="@+id/confirmPassET"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/passET"
-        android:layout_below="@+id/passET"
         android:ems="10"
+        android:hint="Confirm Password"
         android:inputType="textPassword"
-        android:textColor="#fff"/>
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/passET"
+        android:layout_alignStart="@+id/passET"
+        android:layout_alignEnd="@+id/passET" />
 
     <Button
         android:id="@+id/employeeSignup"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/confirmPassET"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp"
         android:background="@drawable/custom_button1"
         android:textColor="#fff"
-        android:text="sign up" />
+        android:text="sign up"
+        android:layout_below="@+id/confirmPassET"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="51dp" />
 
 
 </RelativeLayout>

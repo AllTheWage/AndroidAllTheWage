@@ -11,9 +11,7 @@ import android.widget.*;
 //FIREBASE AUTH
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.*;
 /**
  * Created by Alex on 10/19/2017.
  */
@@ -28,8 +26,10 @@ public class employer_login extends Activity implements
     String email;
     String password;
 
-    //DECLARING FIREBASE AUTH VARIABLE
-    private FirebaseAuth mAuth;
+    //DECLARING FIREBASE AUTH VARIABLE AND FIREBASE DATABASE
+    private FirebaseAuth mAuth= FirebaseAuth.getInstance();
+
+
 
 
     @Override
@@ -46,6 +46,11 @@ public class employer_login extends Activity implements
 
             }
         }   //END OF IF LOGIN_BUTTON
+        else if(i == R.id.SignUpButton1) {
+           //INTENT TO A NEW PAGE WHICH WILL ALLOW THE USER TO SIGN UP
+            signUp();
+
+        }//END OF IF LOGIN_BUTTON
 
     }//END OF ONCLICK
 
@@ -60,8 +65,6 @@ public class employer_login extends Activity implements
                             System.out.println("COULD LOG IN");
                             Intent employerHomeIntent = new Intent(employer_login.this, employer_home.class);
                             startActivity(employerHomeIntent);
-
-
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -83,20 +86,22 @@ public class employer_login extends Activity implements
         setContentView(R.layout.employer_login);
 
         findViewById(R.id.LoginButton1).setOnClickListener(this);   //setting the click listner for Login Button
+        findViewById(R.id.SignUpButton1).setOnClickListener(this);  //setting the click listner for SignUp Button
+
 
         EmailField = (EditText) findViewById(R.id.employerEmailID);
         PasswordField = (EditText) findViewById(R.id.employerPasswordID);
 
-        mAuth = FirebaseAuth.getInstance();    //initializing Firebase Auth to be used to login
-
-        //DUMMY CALL TO SIGN IN BECAUSE FOR SOME REASON IT DOESN'T WORK ON THE FIRST TRY
-        mAuth.signInWithEmailAndPassword(" ", " ");
-
-
-
 
     }//END OF ONCREATE
 
+
+
+    private void signUp(){
+        System.out.println("signUP");
+        Intent employersignUpIntent = new Intent(employer_login.this, employer_signup.class);
+        startActivity(employersignUpIntent);
+    }//END OF signUp
 
 
 }  //END OF FILE
