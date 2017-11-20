@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
+            //test comment
     private GoogleMap map;
     private GoogleApiClient googleApiClient;
     private Location lastLocation;
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity
     private MapFragment mapFragment;
     private static final String NOTIFICATION_MSG="Notification Message";
 
+    //create intent sent by notification
     public static Intent makeNotificationIntent(Context context, String msg){
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra(NOTIFICATION_MSG, msg);
@@ -115,6 +117,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    //Handling Menu options
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
@@ -141,6 +144,7 @@ public class MainActivity extends AppCompatActivity
                 == PackageManager.PERMISSION_GRANTED );
     }
 
+    //request permission from user for use of location services
     private void askPermission(){
         Log.d(TAG, "askPermission()");
         ActivityCompat.requestPermissions(
@@ -159,11 +163,11 @@ public class MainActivity extends AppCompatActivity
             case REQ_PERMISSION: {
                 if ( grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED ){
-                    // Permission granted
+                    // Permission granted by user
                     getLastKnownLocation();
 
                 } else {
-                    // Permission denied
+                    // Permission denied by user
                     permissionDenied();
                 }
                 break;
@@ -175,11 +179,13 @@ public class MainActivity extends AppCompatActivity
         Log.d(TAG, "permissionDenied()");
     }
 
+    //initialize Google Maps
     private void initGMaps(){
         mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
 
+    //Called when map is ready
     @Override
     public void onMapReady(GoogleMap googleMap){
         Log.d(TAG, "onMapReady()");
@@ -200,10 +206,13 @@ public class MainActivity extends AppCompatActivity
         return false;
     }
 
+            
     private LocationRequest locationRequest;
+    //defined in milliseconds and should be adjusted for our purposes later on
     private final int UPDATE_INTERVAL = 1000;
     private final int FASTEST_INTERVAL = 900;
 
+    //begin location updates
     private void startLocationUpdates(){
         Log.i(TAG, "startLocationUpdates()");
         locationRequest = LocationRequest.create()
@@ -224,6 +233,7 @@ public class MainActivity extends AppCompatActivity
         writeActualLocation(location);
     }
 
+    // GoogleApiClient.ConnectionCallbacks connected
     @Override
     public void onConnected(@Nullable Bundle bundle){
         Log.d(TAG, "onConnected()");
@@ -231,11 +241,13 @@ public class MainActivity extends AppCompatActivity
         recoverGeofenceMarker();
     }
 
+    // GoogleApiClient.ConnectionCallbacks suspended
     @Override
     public void onConnectionSuspended(int i){
         Log.d(TAG, "onConnectionSuspended()");
     }
 
+    // GoogleApiClient.OnConnectionFailedListener fail
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult){
         Log.d(TAG, "onConnectionFailed()");
@@ -247,7 +259,7 @@ public class MainActivity extends AppCompatActivity
         if ( checkPermission() ) {
             lastLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
             if ( lastLocation != null ) {
-                Log.i(TAG, "LasKnown location. " +
+                Log.i(TAG, "LastKnown location. " +
                         "Long: " + lastLocation.getLongitude() +
                         " | Lat: " + lastLocation.getLatitude());
                 writeLastLocation();
@@ -290,6 +302,7 @@ public class MainActivity extends AppCompatActivity
 
 
     private Marker geoFenceMarker;
+    //icon for center of geofence
     private void markerForGeofence(LatLng latLng) {
         Log.i(TAG, "markerForGeofence("+latLng+")");
         String title = latLng.latitude + ", " + latLng.longitude;
