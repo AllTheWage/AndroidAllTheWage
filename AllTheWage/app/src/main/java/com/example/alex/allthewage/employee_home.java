@@ -102,6 +102,23 @@ public class employee_home extends AppCompatActivity  {
     public boolean onOptionsItemSelected(MenuItem item){
 
         switch(item.getItemId()){
+            case R.id.paychecksMenu:
+                Intent paycheckIntent = new Intent(employee_home.this, paychecks.class);
+                startActivity(paycheckIntent);
+                return true;
+            case R.id.forumMenu:
+                Intent forumIntent = new Intent(employee_home.this, forum.class);
+                startActivity(forumIntent);
+                return true;
+            case R.id.requestsMenu:
+                Intent requestsIntent = new Intent(employee_home.this, requests.class);
+                startActivity(requestsIntent);
+                return true;
+            case R.id.helpMenu:
+                Intent helpIntent = new Intent(employee_home.this, help.class);
+                startActivity(helpIntent);
+                return true;
+
 
             //NEED TO DECIDE WHAT TO PUT IN THE EMPLOYEE MENU!!!
             case R.id.employeesMenu:
