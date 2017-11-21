@@ -10,11 +10,12 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:background="@color/green"
-        app:titleTextColor="#fff"
         android:minHeight="?attr/actionBarSize"
-        android:titleTextColor="@android:color/white">
-    </android.support.v7.widget.Toolbar>
+        android:titleTextColor="@android:color/white"
+        app:titleTextColor="#fff"></android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -58,9 +59,8 @@
             android:id="@+id/enterRateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/currentRateDisplayText"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="-8dp"
             android:width="220dp"
             android:drawableRight="?attr/actionModeCloseDrawable"
             android:ems="10"
@@ -75,13 +75,36 @@
             android:id="@+id/currentRateDisplayText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/SelectEmployee"
             android:layout_centerHorizontal="true"
             android:width="300dp"
             android:ems="10"
             android:inputType="textEmailAddress|textPersonName"
+            android:paddingTop="50dp"
             android:text="Current set rate is ..."
             android:textStyle="bold|italic" />
+
+        <Spinner
+            android:id="@+id/nameSpinner"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+            android:layout_toEndOf="@+id/SelectEmployee"
+            android:layout_toRightOf="@+id/SelectEmployee"
+            android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+            android:paddingLeft="5dp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/SelectEmployee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView2"
+            android:layout_marginStart="25dp"
+            android:paddingTop="5dp"
+            android:text="Select Employee: "
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     </RelativeLayout>
 

@@ -8,9 +8,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import com.google.firebase.database.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Alex on 11/1/2017.
@@ -21,20 +26,27 @@ import android.widget.TextView;
  *      - Add exception for null value input click
  *      - Limit input to 2 decimal places
  *      - Getting and saving current hour/rate from "employee profile"
- *      - Change onCreate text for currentRateText to display current rate initially, 0 if nothing
  *      - Maybe include a "current hour"
  *      - Remove the underline in currentRateText
- *      - Integrate Firebase
+ *      - Might need to change the initial "None" in names
+ *      - More Firebase implementations
+ *          - Setting Pay Rate
+ *          - returning hour rate (maybe do something similar to what i did with names)
+ *          - Maybe do something like "Current paycheck amount"
  */
 
 public class set_pay_rate extends AppCompatActivity {
 
     private double payRate;
+    private List<String> names;
     TextView currentRateDisplayText;
     EditText enterRateText;
+    Spinner nameSpinner;
+    ArrayAdapter<String> nameAdapter;
 
-    // Get Functions
-    double getPayRate(){ return payRate; }
+    // *** Need a way to get current employer logged in info
+    // String companyName = FirebaseDatabase.getInstance().getReference().child("EMPLOYERS").child("Companies").
+    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("EMPLOYEES").child("Second Test Company");
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,6 +58,35 @@ public class set_pay_rate extends AppCompatActivity {
         // Make sure the toolbar exists in the activity and is not null
         setSupportActionBar(toolbar);
 
+        // access employees database and implement spinner
+        ref.addValueEventListener(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // collectName((Map<String, Object>) dataSnapshot.getValue());
+                        names = new ArrayList<String>();
+                        names.add("None"); // Initial selection
+
+                        // Iterate through employee IDs and retrieve names
+                        for(DataSnapshot employee : dataSnapshot.getChildren()){
+                            String name = employee.child("Name").getValue(String.class);
+                            names.add(name);
+                        }
+
+                        // Spinner implementation
+                        nameSpinner = (Spinner) findViewById(R.id.nameSpinner);
+                        nameAdapter = new ArrayAdapter<String>(set_pay_rate.this, android.R.layout.simple_spinner_dropdown_item, names);
+                        nameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        nameSpinner.setAdapter(nameAdapter);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                }
+
+        );
 
         currentRateDisplayText = (TextView) findViewById(R.id.currentRateDisplayText);
         enterRateText = (EditText) findViewById(R.id.enterRateText);
@@ -72,7 +113,6 @@ public class set_pay_rate extends AppCompatActivity {
             }
         });
     }
-
 
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.mymenu, menu);

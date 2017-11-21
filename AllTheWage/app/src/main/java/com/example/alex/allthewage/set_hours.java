@@ -26,6 +26,9 @@ import android.widget.TextView;
  *      - Maybe include a "current rate"
  *      - Remove the underline in currentHourText
  *      - Integrate Firebase
+ *      - May have a major rehaul depending on what team wants on the geolocation implementation
+ *          - Change this to more of an hour counter based on geolocation?
+ *          - Or manually input hours?
  */
 
 public class set_hours extends AppCompatActivity {
@@ -34,10 +37,6 @@ public class set_hours extends AppCompatActivity {
     TextView currentHourDisplayText;
     EditText enterHourText;
 
-    // Get Functions
-    double getHours(){
-        return hours;
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
