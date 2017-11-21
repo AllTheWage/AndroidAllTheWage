@@ -75,6 +75,9 @@
 
         </activity>
 
+        <activity android:name=".requests">
+
+        </activity>
         <activity android:name=".plaid_layout">
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar">
