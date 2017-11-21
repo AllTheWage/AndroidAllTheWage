@@ -24,8 +24,8 @@ public class plaid_layout extends AppCompatActivity {
         linkInitializeOptions.put("key", "0a8665a68e9bc1e02edf51aea606fe");
         linkInitializeOptions.put("product", "auth");
         linkInitializeOptions.put("apiVersion", "v2"); // set this to "v1" if using the legacy Plaid API
-        linkInitializeOptions.put("env", "sandbox");
-        linkInitializeOptions.put("clientName", "Test App");
+        linkInitializeOptions.put("env", "development");
+        linkInitializeOptions.put("clientName", globalVars.GlobalCompanyName);
         linkInitializeOptions.put("selectAccount", "true");
         linkInitializeOptions.put("webhook", "http://requestb.in");
         linkInitializeOptions.put("baseUrl", "https://cdn.plaid.com/link/v2/stable/link.html");
@@ -64,15 +64,20 @@ public class plaid_layout extends AppCompatActivity {
 
                     if (action.equals("connected")) {
                         // User successfully linked
-                        Log.d("Public token: ", linkData.get("public_token"));
-                        Log.d("Account ID: ", linkData.get("account_id"));
-                        Log.d("Account name: ", linkData.get("account_name"));
-                        Log.d("Institution type: ", linkData.get("institution_type"));
-                        Log.d("Institution name: ", linkData.get("institution_name"));
+
+//                        Log.d("Public token: ", linkData.get("public_token"));
+//                        Log.d("Account ID: ", linkData.get("account_id"));
+//                        Log.d("Account name: ", linkData.get("account_name"));
+//                        Log.d("Institution type: ", linkData.get("institution_type"));
+//                        Log.d("Institution name: ", linkData.get("institution_name"));
 
                         // Reload Link in the Webview
                         // You will likely want to transition the view at this point.
-                        plaidLinkWebview.loadUrl(linkInitializationUrl.toString());
+
+                        Intent employerPaychecks = new Intent(plaid_layout.this, paychecks.class);
+                        startActivity(employerPaychecks);
+                        //plaidLinkWebview.loadUrl(linkInitializationUrl.toString());
+
                     } else if (action.equals("exit")) {
                         // User exited
                         // linkData may contain information about the user's status in the Link flow,
