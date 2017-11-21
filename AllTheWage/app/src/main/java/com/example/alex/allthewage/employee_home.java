@@ -47,12 +47,18 @@ public class employee_home extends AppCompatActivity  {
         // their own company name
         empref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
+            // this will be called to retrieve data from firebase
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //we will set this equal to true if
+                //we find the company name on the employer side
                 boolean foundit = false;
 
+                //first for loop which will search iteratively through all the company names
+                //in the employee side of the reference
                 for(DataSnapshot CompanyNames: dataSnapshot.getChildren())
                 {
-
+                    //this will search to see if the user id of the current logged in user is in the
+                    //employee side of the database
                     for(DataSnapshot userIDs: CompanyNames.getChildren()){
                         if(userIDs.getKey().contentEquals(auth.getUid())){
                             globalVars.GlobalCompanyName = CompanyNames.getKey();
