@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,10 +40,15 @@ public class set_pay_rate extends AppCompatActivity {
 
     private double payRate;
     private List<String> names;
+    private List<String> IDs;
     TextView currentRateDisplayText;
     EditText enterRateText;
     Spinner nameSpinner;
-    ArrayAdapter<String> nameAdapter;
+    ArrayAdapter nameAdapter;
+
+    private String selectedName;
+    private String selectedRate;
+    private String selectedHours;
 
     // *** Need a way to get current employer logged in info
     // String companyName = FirebaseDatabase.getInstance().getReference().child("EMPLOYERS").child("Companies").
@@ -62,22 +68,54 @@ public class set_pay_rate extends AppCompatActivity {
         ref.addValueEventListener(
                 new ValueEventListener() {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
+                    public void onDataChange(final DataSnapshot dataSnapshot) {
                         // collectName((Map<String, Object>) dataSnapshot.getValue());
                         names = new ArrayList<String>();
                         names.add("None"); // Initial selection
+                        IDs = new ArrayList<String>();
+                        IDs.add("None"); // Initial selection
 
                         // Iterate through employee IDs and retrieve names
                         for(DataSnapshot employee : dataSnapshot.getChildren()){
                             String name = employee.child("Name").getValue(String.class);
+                            String ID = employee.getKey();
                             names.add(name);
+                            IDs.add(ID);
                         }
 
                         // Spinner implementation
                         nameSpinner = (Spinner) findViewById(R.id.nameSpinner);
-                        nameAdapter = new ArrayAdapter<String>(set_pay_rate.this, android.R.layout.simple_spinner_dropdown_item, names);
+                        nameAdapter = new ArrayAdapter(set_pay_rate.this, android.R.layout.simple_spinner_dropdown_item, names);
                         nameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         nameSpinner.setAdapter(nameAdapter);
+
+                        // Spinner selection
+                        nameSpinner.setOnItemSelectedListener(
+                                new AdapterView.OnItemSelectedListener() {
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                        // STORE INFORMATION
+                                        selectedName = (String) parent.getItemAtPosition(position);
+                                        if (selectedName == "None") {
+                                            selectedRate = "0";
+                                            selectedHours = "0";
+                                        }
+                                        else {
+                                            DataSnapshot employee = dataSnapshot.child(IDs.get(position));
+                                            selectedRate = employee.child("Pay Rate").getValue().toString();
+                                            selectedHours = employee.child("Hours Worked").getValue().toString();
+                                        }
+
+                                        //Change Display Information
+                                        currentRateDisplayText.setText("Current pay-rate is $" + selectedRate + " per hour");
+                                    }
+
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> parent) {
+
+                                    }
+                                }
+                        );
                     }
 
                     @Override
@@ -85,8 +123,8 @@ public class set_pay_rate extends AppCompatActivity {
 
                     }
                 }
-
         );
+
 
         currentRateDisplayText = (TextView) findViewById(R.id.currentRateDisplayText);
         enterRateText = (EditText) findViewById(R.id.enterRateText);
