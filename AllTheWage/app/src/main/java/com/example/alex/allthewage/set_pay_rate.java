@@ -23,17 +23,12 @@ import java.util.List;
  * Modified by Jamine Guo on 11/5/2017
  *
  * List of things to work on:
- *      - Limit input value for only numbers (hoping to be able to assign specific keyboard instead)
  *      - Add exception for null value input click
  *      - Limit input to 2 decimal places
- *      - Getting and saving current hour/rate from "employee profile"
- *      - Maybe include a "current hour"
  *      - Remove the underline in currentRateText
- *      - Might need to change the initial "None" in names
- *      - More Firebase implementations
- *          - Setting Pay Rate
- *          - returning hour rate (maybe do something similar to what i did with names)
- *          - Maybe do something like "Current paycheck amount"
+ *      - Maybe do something like "Current paycheck amount"
+ *      - Integrate push notifications instead of current "success!" msg
+ *      - Need a way to get current employer logged in info
  */
 
 public class set_pay_rate extends AppCompatActivity {
@@ -46,9 +41,11 @@ public class set_pay_rate extends AppCompatActivity {
     Spinner nameSpinner;
     ArrayAdapter nameAdapter;
 
+    // variables for/from selected employee from spinner
     private String selectedName;
     private String selectedRate;
     private String selectedHours;
+    private String selectedID;
 
     // *** Need a way to get current employer logged in info
     // String companyName = FirebaseDatabase.getInstance().getReference().child("EMPLOYERS").child("Companies").
@@ -99,15 +96,18 @@ public class set_pay_rate extends AppCompatActivity {
                                         if (selectedName == "None") {
                                             selectedRate = "0";
                                             selectedHours = "0";
+                                            selectedID = "0";
+                                            currentRateDisplayText.setText("Current set rate is ...");
                                         }
                                         else {
-                                            DataSnapshot employee = dataSnapshot.child(IDs.get(position));
+                                            selectedID = IDs.get(position);
+                                            DataSnapshot employee = dataSnapshot.child(selectedID);
                                             selectedRate = employee.child("Pay Rate").getValue().toString();
                                             selectedHours = employee.child("Hours Worked").getValue().toString();
-                                        }
 
-                                        //Change Display Information
-                                        currentRateDisplayText.setText("Current pay-rate is $" + selectedRate + " per hour");
+                                            //Change Display Information
+                                            currentRateDisplayText.setText("Current pay-rate is $" + selectedRate + " per hour");
+                                        }
                                     }
 
                                     @Override
@@ -134,11 +134,22 @@ public class set_pay_rate extends AppCompatActivity {
         inputRatesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                payRate = Double.parseDouble(enterRateText.getText().toString());
-                // Change text after input
-                currentRateDisplayText.setText("Current pay-rate is $" + payRate + " per hour");
-                enterRateText.setHint("Success! Reset?");
-                enterRateText.setText("");
+                if(selectedName == "None"){
+                    enterRateText.setHint("Select an employee");
+                    enterRateText.setText("");
+                }
+                else {
+                    // input new info
+                    payRate = Double.parseDouble(enterRateText.getText().toString());
+                    ref.child(selectedID).child("Pay Rate").setValue(payRate);
+                    ref.child(selectedID).child("Paycheck Amount").setValue(payRate * Double.parseDouble(selectedHours));
+
+                    // Change display after input
+                    // currentRateDisplayText.setText("Current pay-rate is $" + payRate + " per hour");
+                    // nameSpinner.setSelection(nameAdapter.getPosition(selectedName)); // doesn't seem to do anything because of OnItemSelected Listener
+                    enterRateText.setHint("Success! Another?");
+                    enterRateText.setText("");
+                }
             }
         });
 

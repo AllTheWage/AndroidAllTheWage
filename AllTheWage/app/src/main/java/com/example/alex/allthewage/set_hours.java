@@ -17,7 +17,6 @@ import android.widget.TextView;
  * Modified by Jamine Guo on 11/5/2017.
  *
  * List of things to work on:
- *      - Limit input value for only numbers (hoping to be able to assign specific keyboard instead)
  *      - Add exception for null value input click
  *      - Limit input to 2 decimal places
  *      - Remove the "hour" and "hours" distinction?
