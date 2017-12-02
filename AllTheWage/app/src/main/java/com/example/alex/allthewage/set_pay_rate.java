@@ -29,6 +29,7 @@ import java.util.List;
  *      - Maybe do something like "Current paycheck amount"
  *      - Integrate push notifications instead of current "success!" msg
  *      - Need a way to get current employer logged in info
+ *      - Add an undo feature?
  */
 
 public class set_pay_rate extends AppCompatActivity {
@@ -147,7 +148,7 @@ public class set_pay_rate extends AppCompatActivity {
                     // Change display after input
                     // currentRateDisplayText.setText("Current pay-rate is $" + payRate + " per hour");
                     // nameSpinner.setSelection(nameAdapter.getPosition(selectedName)); // doesn't seem to do anything because of OnItemSelected Listener
-                    enterRateText.setHint("Success! Another?");
+                    enterRateText.setHint("Inputted successfully!");
                     enterRateText.setText("");
                 }
             }
