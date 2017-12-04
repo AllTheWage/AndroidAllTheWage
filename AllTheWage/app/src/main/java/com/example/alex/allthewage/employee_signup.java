@@ -110,10 +110,10 @@ public class employee_signup extends Activity implements
 
                     //SET UP DATABASE
                     //SETTING UP EMPLOYEE SIDE FIRST
-                    employeeref.child("Paycheck Amount").setValue(2000);
+                    employeeref.child("Paycheck Amount").setValue(0);
                     employeeref.child("Name").setValue(name);
                     employeeref.child("Hours Worked").setValue(0);
-                    employeeref.child("Pay Rate").setValue("H10");
+                    employeeref.child("Pay Rate").setValue(0);
 
 
                     //SET UP DATABASE
