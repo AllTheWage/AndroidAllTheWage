@@ -80,17 +80,16 @@
         android:ems="10"
         android:inputType="textPersonName" />
 
-    <Spinner
-        android:id="@+id/requestShiftSpinner"
-        android:layout_width="218dp"
-        android:layout_height="25dp"
+    <EditText
+        android:id="@+id/requestShiftET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/requestShiftTV"
         android:layout_alignStart="@+id/requestReasonET"
         android:background="#ffffff"
         android:ems="10"
         android:inputType="textPersonName"
-        android:popupBackground="#ffffff"
-        android:text="Name" />
+         />
 
     <TextView
         android:id="@+id/ExtraInfoTV"

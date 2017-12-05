@@ -9,13 +9,18 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.ActionBar;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.*;
 import com.google.firebase.database.*;
@@ -33,12 +38,29 @@ public class employee_home extends AppCompatActivity  {
 
     private TextView welcomeMessage;
 
+    // Alex and Morgan implement the request button
+    DatabaseReference req = ref.child("REQUESTS");
+    private EditText reason;
+    private EditText info;
+    private EditText shift;
+    private Button submitButton;
+
+
+    String reasonString;
+    String xInfo;
+    String shiftString;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.employee_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.employee_home_toolbar);
         setSupportActionBar(toolbar);
+        reason = (EditText) findViewById(R.id.requestReasonET);
+        info = (EditText) findViewById(R.id.ExtraInfoET);
+        shift = (EditText) findViewById(R.id.requestShiftET);
+        submitButton = (Button) findViewById(R.id.submitRequestButton);
+
 
         welcomeMessage = (TextView) findViewById(R.id.employeeWelcome);
 
@@ -97,7 +119,39 @@ public class employee_home extends AppCompatActivity  {
         });//END OF DISPLAYING COMPANY NAME
 
 
+
+
+        // Alex and Morgan
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reasonString = reason.getText().toString();
+                xInfo = info.getText().toString();
+                shiftString = shift.getText().toString();
+                info.setText("");           //reset the edit texts
+                reason.setText("");
+                shift.setText("");
+
+                req = ref.child("REQUESTS").child(globalVars.GlobalCompanyName).child(auth.getUid());
+                //send info to database
+                req.child("Extra Information").setValue(xInfo);
+                req.child("Reason").setValue(reasonString);
+                req.child("Shift").setValue(shiftString);
+
+                Toast.makeText(getApplicationContext(), "Request Submitted", Toast.LENGTH_SHORT);
+
+            }
+        });
+
+
+
     }
+
+
+
+
+
+
 
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.employeemenu, menu);
