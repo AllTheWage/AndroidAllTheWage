@@ -4,18 +4,25 @@ package com.example.alex.allthewage;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.location.Location;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.ActionBar;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+
 import com.google.firebase.auth.*;
 import com.google.firebase.database.*;
+
+
 
 
 /**
@@ -73,6 +80,14 @@ public class employer_home extends AppCompatActivity {
             }
         });
 
+        final Button GeoFenceButton = (Button) findViewById(R.id.Geo_Fence_Button);
+        GeoFenceButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent geo_fence = new Intent (employer_home.this, geo_fence_class.class);
+                startActivity(geo_fence);
+            }
+
+        });
     }
 
 

@@ -15,6 +15,12 @@
         android:minHeight="?attr/actionBarSize"
         android:titleTextColor="@android:color/white"></android.support.v7.widget.Toolbar>
 
+    <Button
+        android:id="@+id/Geo_Fence_Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Geo Fence" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -41,5 +47,7 @@
                     android:layout_below="@+id/employerWelcome"
                     android:layout_centerHorizontal="true" />
             </RelativeLayout>
+
     </ScrollView>
+
 </LinearLayout>
