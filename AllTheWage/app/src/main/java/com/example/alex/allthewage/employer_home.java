@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.firebase.auth.*;
@@ -80,13 +81,17 @@ public class employer_home extends AppCompatActivity {
             }
         });
 
-        final Button GeoFenceButton = (Button) findViewById(R.id.Geo_Fence_Button);
-        GeoFenceButton.setOnClickListener(new View.OnClickListener() {
+        final Button button = (Button) findViewById(R.id.Geo_Fence_Button);
+        button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent geo_fence = new Intent (employer_home.this, geo_fence_class.class);
-                startActivity(geo_fence);
+                // Code here executes on main thread after user presses button
+                Toast.makeText(
+                        getApplicationContext(),
+                        "You Clicked : " + button,
+                        Toast.LENGTH_SHORT
+                ).show();
+                startActivity(new Intent(employer_home.this, geo_fence_class.class));
             }
-
         });
     }
 
