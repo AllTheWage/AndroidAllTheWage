@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.location.Location;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,21 +18,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.Geofence;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.auth.*;
 import com.google.firebase.database.*;
 
-import java.util.UUID;
-
-import static android.provider.MediaStore.Video.VideoColumns.LATITUDE;
-import static android.provider.MediaStore.Video.VideoColumns.LONGITUDE;
 
 
 
@@ -91,58 +81,15 @@ public class employer_home extends AppCompatActivity {
         });
 
         final Button GeoFenceButton = (Button) findViewById(R.id.Geo_Fence_Button);
-        final LocationRequest mLocationRequest = LocationRequest.create()
-                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                .setInterval(10 * 1000)        // 10 seconds, in milliseconds
-                .setFastestInterval(1 * 1000); // 1 second, in milliseconds
-        FusedLocationProviderClient location = LocationServices.getFusedLocationProviderClient(this);
         GeoFenceButton.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
-
-                GoogleApiClient.ConnectionCallbacks connectionAddListener =
-                        new GoogleApiClient.ConnectionCallbacks() {
-                            @Override
-                            public void onConnected(Bundle bundle) {
-                            }
-
-                            @Override
-                            public void onConnectionSuspended(int i) {
-                            }
-                        };
-
-                GoogleApiClient.OnConnectionFailedListener connectionFailedListener =
-                        new GoogleApiClient.OnConnectionFailedListener() {
-                            @Override
-                            public void onConnectionFailed(ConnectionResult connectionResult) {
-
-                            }
-                        };
+                Intent geo_fence = new Intent (employer_home.this, geo_fence_class.class);
+                startActivity(geo_fence);
             }
-
-                public void createGeofences(double latitude, double longitude) {
-                    String id = UUID.randomUUID().toString();
-                    Geofence fence = new Geofence.Builder()
-                            .setRequestId(id)
-                            .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER | Geofence.GEOFENCE_TRANSITION_EXIT)
-                            .setCircularRegion(latitude, longitude, 100) // Try changing your radius
-                            .setExpirationDuration(Geofence.NEVER_EXPIRE)
-                            .build();
-                }
 
         });
     }
-    private boolean servicesConnected() {
-        // Check that Google Play services is available
-        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        if (ConnectionResult.SUCCESS == resultCode) {
-            // Handle success
-            return true;
-        } else {
-            // Handle the error
-            return false;
-        }
-    }
+
 
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.mymenu, menu);
