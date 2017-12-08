@@ -55,9 +55,7 @@ public class set_hours extends AppCompatActivity {
     private String selectedHours;
     private String selectedID;
 
-    // *** Need a way to get current employer logged in info
-    // String companyName = FirebaseDatabase.getInstance().getReference().child("EMPLOYERS").child("Companies").
-    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("EMPLOYEES").child("Second Test Company");
+     DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("EMPLOYEES").child(globalVars.GlobalCompanyName);
 
 
     @Override

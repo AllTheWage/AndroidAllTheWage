@@ -7,16 +7,6 @@
     android:layout_height="match_parent"
     android:background="@color/green">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/green"
-        app:titleTextColor="#fff"
-        android:minHeight="?attr/actionBarSize"
-        android:titleTextColor="@android:color/white">
-    </android.support.v7.widget.Toolbar>
-
     <RelativeLayout
         android:id="@+id/currentHourText"
         android:layout_width="match_parent"
@@ -118,5 +108,15 @@
 
 
     </RelativeLayout>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        app:titleTextColor="#fff"
+        android:minHeight="?attr/actionBarSize"
+        android:titleTextColor="@android:color/white">
+    </android.support.v7.widget.Toolbar>
 
 </LinearLayout>
