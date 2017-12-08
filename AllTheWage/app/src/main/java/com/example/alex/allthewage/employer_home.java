@@ -32,8 +32,10 @@ public class employer_home extends AppCompatActivity {
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     //Getting the reference to the employers personal location
     DatabaseReference empref = ref.child("EMPLOYERS").child("Companies").child(auth.getUid());
-
+    DatabaseReference numEmpRef = ref.child("EMPLOYERS").child("Companies").child(auth.getUid()).child("Second Test Company");
+    long count;
     private TextView welcomeMessage;
+    private TextView numberOfemp;
 
 
     @Override
@@ -43,6 +45,7 @@ public class employer_home extends AppCompatActivity {
         setContentView(R.layout.employer_home);
 
         welcomeMessage = (TextView) findViewById(R.id.employerWelcome);
+        numberOfemp = (TextView) findViewById(R.id.employerNumberEmployees);
 
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -50,6 +53,8 @@ public class employer_home extends AppCompatActivity {
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         // Make sure the toolbar exists in the activity and is not null
         setSupportActionBar(toolbar);
+
+        DataSnapshot dataSnapshot;
 
         //DESCRIPTION
         // Allows us to display the custom welcome message for each company depending on
@@ -61,7 +66,7 @@ public class employer_home extends AppCompatActivity {
                {
                    globalVars.GlobalCompanyName = child.getKey();
                    System.out.println("Welcome, " +  globalVars.GlobalCompanyName);
-
+                   count = dataSnapshot.getChildrenCount();
                    welcomeMessage.setText("Welcome, " +  globalVars.GlobalCompanyName);
 
                }
@@ -72,6 +77,27 @@ public class employer_home extends AppCompatActivity {
 
             }
         });
+
+
+        numEmpRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot child: dataSnapshot.getChildren())
+                {
+                    globalVars.GlobalCompanyName = child.getKey();
+                    count = dataSnapshot.getChildrenCount();
+                    numberOfemp.setText("Number of Employees: " + count);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
 
     }
 
