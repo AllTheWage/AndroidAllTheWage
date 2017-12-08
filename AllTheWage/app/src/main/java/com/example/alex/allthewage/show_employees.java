@@ -7,11 +7,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Spinner;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.List;
 
 /**
  * Created by evan on 11/19/17.
  */
 public class show_employees extends AppCompatActivity {
+
+    private List<String> names;
+    Spinner nameSpinner;
+    private String selectedName;
+
+    private FirebaseAuth mAuth= FirebaseAuth.getInstance();
+
+    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("EMPLOYERS").child("Companies").child(mAuth.getUid()).child(globalVars.GlobalCompanyName);
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

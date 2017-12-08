@@ -21,14 +21,47 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Employees"
-            android:textColor="#fff"
-            android:textSize="20sp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="102dp" />
+            android:layout_marginTop="20dp"
+            android:text="Employees"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView7"
+            android:layout_marginEnd="18dp"
+            android:layout_toStartOf="@+id/spinner2"
+            android:paddingTop="5dp"
+            android:text="Select Employee: "
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <Spinner
+            android:id="@+id/employeeSpinner"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView5"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+            android:paddingLeft="5dp"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/employeeInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="49dp"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:layout_below="@+id/textView5"
+            android:layout_centerHorizontal="true" />
 
 
     </RelativeLayout>

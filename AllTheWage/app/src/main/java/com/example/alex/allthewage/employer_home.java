@@ -4,18 +4,26 @@ package com.example.alex.allthewage;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.location.Location;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.app.ActionBar;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 import com.google.firebase.auth.*;
 import com.google.firebase.database.*;
+
+
 
 
 /**
@@ -32,8 +40,10 @@ public class employer_home extends AppCompatActivity {
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     //Getting the reference to the employers personal location
     DatabaseReference empref = ref.child("EMPLOYERS").child("Companies").child(auth.getUid());
-
+    DatabaseReference numEmpRef = ref.child("EMPLOYERS").child("Companies").child(auth.getUid()).child("Second Test Company");
+    long count;
     private TextView welcomeMessage;
+    private TextView numberOfemp;
 
 
     @Override
@@ -43,6 +53,7 @@ public class employer_home extends AppCompatActivity {
         setContentView(R.layout.employer_home);
 
         welcomeMessage = (TextView) findViewById(R.id.employerWelcome);
+        numberOfemp = (TextView) findViewById(R.id.employerNumberEmployees);
 
         // Find the toolbar view inside the activity layout
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -50,6 +61,8 @@ public class employer_home extends AppCompatActivity {
         // Sets the Toolbar to act as the ActionBar for this Activity window.
         // Make sure the toolbar exists in the activity and is not null
         setSupportActionBar(toolbar);
+
+        DataSnapshot dataSnapshot;
 
         //DESCRIPTION
         // Allows us to display the custom welcome message for each company depending on
@@ -61,7 +74,7 @@ public class employer_home extends AppCompatActivity {
                {
                    globalVars.GlobalCompanyName = child.getKey();
                    System.out.println("Welcome, " +  globalVars.GlobalCompanyName);
-
+                   count = dataSnapshot.getChildrenCount();
                    welcomeMessage.setText("Welcome, " +  globalVars.GlobalCompanyName);
 
                }
@@ -73,6 +86,23 @@ public class employer_home extends AppCompatActivity {
             }
         });
 
+        numEmpRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot child: dataSnapshot.getChildren())
+                {
+                    globalVars.GlobalCompanyName = child.getKey();
+                    count = dataSnapshot.getChildrenCount();
+                    numberOfemp.setText("Number of Employees: " + count);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 
