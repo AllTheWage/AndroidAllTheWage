@@ -103,8 +103,20 @@ public class employer_home extends AppCompatActivity {
 
             }
         });
-    }
+        final Button button = (Button) findViewById(R.id.Geo_Fence_Button);
+                button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                                // Code here executes on main thread after user presses button
+                                        Toast.makeText(
+                                                        getApplicationContext(),
+                                                        "You Clicked : " + button,
+                                                  Toast.LENGTH_SHORT
+                                                        ).show();
+                                startActivity(new Intent(employer_home.this, geo_fence_class.class));
+            }
 
+        });
+    }
 
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.mymenu, menu);
