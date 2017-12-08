@@ -23,6 +23,27 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/selectEmployee2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView"
+            android:layout_marginStart="25dp"
+            android:paddingTop="5dp"
+            android:text="Select Employee: "
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <Spinner
+            android:id="@+id/nameSpinner2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_toEndOf="@+id/selectEmployee2"
+            android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+            android:paddingLeft="5dp"
+            android:textAlignment="center" />
+
+        <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,29 +60,40 @@
             android:layout_width="@android:dimen/thumbnail_width"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/inputHoursButton"
-            android:layout_marginBottom="34dp"
+            android:layout_alignStart="@+id/changeHoursButton"
+            android:layout_marginBottom="21dp"
             android:background="@drawable/custom_button1"
             android:text="Go to Set Rate Page"
             android:textColor="#ffffffff" />
 
         <Button
-            android:id="@+id/inputHoursButton"
+            android:id="@+id/addHoursButton"
+            android:layout_width="@android:dimen/thumbnail_width"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/changeHoursButton"
+            android:layout_alignStart="@+id/changeHoursButton"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/custom_button1"
+            android:text="Add Hours"
+            android:textColor="#ffffffff" />
+
+        <Button
+            android:id="@+id/changeHoursButton"
             android:layout_width="@android:dimen/thumbnail_width"
             android:layout_height="wrap_content"
             android:layout_above="@+id/setRateButton"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="11dp"
             android:background="@drawable/custom_button1"
-            android:text="Input Hours"
+            android:text="Change Hours"
             android:textColor="#ffffffff" />
 
         <EditText
             android:id="@+id/enterRateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/currentHourDisplayText"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:width="220dp"
             android:drawableRight="?attr/actionModeCloseDrawable"
             android:ems="10"
@@ -75,12 +107,13 @@
             android:id="@+id/currentHourDisplayText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView"
+            android:layout_below="@+id/selectEmployee2"
             android:layout_centerHorizontal="true"
             android:width="300dp"
             android:ems="10"
             android:inputType="textEmailAddress|textPersonName"
-            android:text="Current set hours is ..."
+            android:paddingTop="50dp"
+            android:text="Current hours worked is ..."
             android:textStyle="bold|italic" />
 
 

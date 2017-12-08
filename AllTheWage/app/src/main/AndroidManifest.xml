@@ -4,7 +4,9 @@
     package="com.example.alex.allthewage">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name=
+        "android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
         <activity android:name=".splashScreen.splashScreen"
             android:label="@string/app_name">
             <intent-filter>
@@ -78,6 +83,14 @@
         <activity android:name=".requests">
 
         </activity>
+        <activity android:name=".geo_fence_class">
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.geo_fence_class" />
+            </intent-filter>
+    </activity>
+
         <activity android:name=".plaid_layout">
             android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar">
@@ -85,7 +98,10 @@
                 <action android:name="android.intent.action.plaid_layout" />
             </intent-filter>
         </activity>
-
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value= "AIzaSyAgfKLq_ilvOjY6kUUPGG1WWrc9E4ZI_aw" />
+        <service android:name="com.example.alex.allthewage.GeofenceTransitionService" />
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
