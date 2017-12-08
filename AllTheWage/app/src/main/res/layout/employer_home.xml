@@ -40,6 +40,27 @@
                     android:layout_marginTop="18dp"
                     android:layout_below="@+id/employerWelcome"
                     android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:id="@+id/employerNumberEmployees"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/imageView"
+                    android:layout_alignTop="@+id/imageView"
+                    android:layout_marginStart="44dp"
+                    android:layout_marginTop="79dp"
+                    android:text="Number of Employees:"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/employerNumberEmployees"
+                    android:layout_below="@+id/employerNumberEmployees"
+                    android:layout_marginTop="51dp"
+                    android:text="Paycheck Total:"
+                    android:textSize="18sp" />
             </RelativeLayout>
     </ScrollView>
 </LinearLayout>

@@ -13,7 +13,9 @@
         android:background="@color/green"
         app:titleTextColor="#fff"
         android:minHeight="?attr/actionBarSize"
-        android:titleTextColor="@android:color/white"></android.support.v7.widget.Toolbar>
+        android:titleTextColor="@android:color/white">
+
+    </android.support.v7.widget.Toolbar>
 
 
     <TextView
@@ -25,7 +27,7 @@
         android:layout_marginTop="13dp"
         android:text="Welcome, [Employee Name]"
         android:textColor="#fff"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
             <ImageView
                 android:layout_width="300dp"
@@ -124,6 +126,26 @@
         android:text="Submit"
         android:textColor="#fff"
         android:background="@drawable/custom_button1"/>
+
+    <TextView
+        android:id="@+id/employeeTotalPaycheckTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/employeeWelcome"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_marginTop="40dp"
+        android:text="Total Paycheck:"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/employeeHoursWorkedTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/employeeTotalPaycheckTV"
+        android:layout_below="@+id/employeeTotalPaycheckTV"
+        android:layout_marginTop="15dp"
+        android:text="Hours Worked:"
+        android:textSize="18sp"/>
 
 
 </RelativeLayout>

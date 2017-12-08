@@ -25,6 +25,8 @@ import android.widget.Toast;
 import com.google.firebase.auth.*;
 import com.google.firebase.database.*;
 
+import org.w3c.dom.Text;
+
 public class employee_home extends AppCompatActivity  {
 
 
@@ -35,7 +37,8 @@ public class employee_home extends AppCompatActivity  {
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
     //Getting the reference to the employers personal location
     DatabaseReference empref = ref.child("EMPLOYEES");
-
+    DatabaseReference paycheckRef = ref.child("EMPLOYEES");
+    DatabaseReference hourRef = ref.child("EMPLOYEES");
     private TextView welcomeMessage;
 
     // Alex and Morgan implement the request button
@@ -44,6 +47,8 @@ public class employee_home extends AppCompatActivity  {
     private EditText info;
     private EditText shift;
     private Button submitButton;
+    private TextView tPaycheck;
+    private TextView hWorked;
 
 
     String reasonString;
@@ -60,7 +65,8 @@ public class employee_home extends AppCompatActivity  {
         info = (EditText) findViewById(R.id.ExtraInfoET);
         shift = (EditText) findViewById(R.id.requestShiftET);
         submitButton = (Button) findViewById(R.id.submitRequestButton);
-
+        tPaycheck = (TextView) findViewById(R.id.employeeTotalPaycheckTV);
+        hWorked = (TextView) findViewById(R.id.employeeHoursWorkedTV);
 
         welcomeMessage = (TextView) findViewById(R.id.employeeWelcome);
 
@@ -97,6 +103,8 @@ public class employee_home extends AppCompatActivity  {
 
                 //FIXING THE DATABASE REFERENCE
                 empref = ref.child("EMPLOYEES").child(globalVars.GlobalCompanyName).child(auth.getUid()).child("Name");
+                paycheckRef = ref.child("EMPLOYEES").child(globalVars.GlobalCompanyName).child(auth.getUid()).child("Paycheck Amount");
+                hourRef = ref.child("EMPLOYEES").child(globalVars.GlobalCompanyName).child(auth.getUid()).child("Hours Worked");
 
                 empref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -110,6 +118,38 @@ public class employee_home extends AppCompatActivity  {
 
                     }
                 });//END OF GETTING EMPLOYEE NAME
+
+
+                // getting employee total paycheck
+                paycheckRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        tPaycheck.setText("Total Paycheck: $" + dataSnapshot.getValue().toString());
+                        globalVars.GlobalEmployeeName = dataSnapshot.getValue().toString();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });//END OF GETTING EMPLOYEE TOTAL PAYCHECK
+
+                // getting employee total HOURS WORKED
+                hourRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        hWorked.setText("Hours Worked: " + dataSnapshot.getValue().toString());
+                        globalVars.GlobalEmployeeName = dataSnapshot.getValue().toString();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });//END OF GETTING EMPLOYEE TOTAL HOURS WORKED
+
+
+
             }
 
             @Override
