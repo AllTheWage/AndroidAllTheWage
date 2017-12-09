@@ -26,10 +26,9 @@ import java.util.List;
  *      - Add exception for null value input click
  *      - Limit input to 2 decimal places
  *      - Remove the underline in currentRateText
- *      - Maybe do something like "Current paycheck amount"
  *      - Integrate push notifications instead of current "success!" msg
- *      - Need a way to get current employer logged in info
  *      - Add an undo feature?
+ *      - Lock EditText lines
  */
 
 public class set_pay_rate extends AppCompatActivity {
@@ -48,9 +47,7 @@ public class set_pay_rate extends AppCompatActivity {
     private String selectedHours;
     private String selectedID;
 
-    // *** Need a way to get current employer logged in info
-    // String companyName = FirebaseDatabase.getInstance().getReference().child("EMPLOYERS").child("Companies").
-    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("EMPLOYEES").child("Second Test Company");
+    DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("EMPLOYEES").child(globalVars.GlobalCompanyName);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
