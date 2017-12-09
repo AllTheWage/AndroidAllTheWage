@@ -34,9 +34,9 @@ import java.util.List;
  *      - Remove the underline in currentHourText
  *      - Maybe do something like "Current paycheck amount"
  *      - Incorporation involving geolocation feature?
- *      - Need a way to get current employer logged in info
  *      - Integrate push notifications instead of current "success!" msg
  *      - Add an undo feature?
+ *      - Lock EditText lines
  */
 
 public class set_hours extends AppCompatActivity {
